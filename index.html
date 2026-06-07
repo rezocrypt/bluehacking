@@ -15,13 +15,40 @@
     }
 
     body {
-      background-image: url("https://store.x-plane.org/assets/images/files/jcs/f16xp11/f-16_31.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background: url("https://example.com/your-image.jpg") center/cover no-repeat;
+    }
+
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #00ff66;
+      font-family: monospace;
+      font-size: 48px;
+      text-align: center;
+      text-shadow: 0 0 10px #00ff66, 0 0 25px #00ff66;
+      white-space: nowrap;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50%, 100% { opacity: 0; }
     }
   </style>
 </head>
 <body>
+
+  <div class="center-text">
+    hackers are not born<br>
+    they are made<span class="cursor">_</span>
+  </div>
+
 </body>
 </html>
