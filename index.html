@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wallpaper</title>
 
   <style>
@@ -15,40 +15,67 @@
     }
 
     body {
-      background: url("https://example.com/your-image.jpg") center/cover no-repeat;
+      background: url("https://store.x-plane.org/assets/images/files/jcs/f16xp11/f-16_31.jpg") center/cover no-repeat;
+      position: relative;
+      font-family: monospace;
     }
 
-    .center-text {
+    /* dark overlay */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    /* center text */
+    .text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: #00ff66;
-      font-family: monospace;
       font-size: 48px;
       text-align: center;
       text-shadow: 0 0 10px #00ff66, 0 0 25px #00ff66;
-      white-space: nowrap;
+      white-space: pre-line;
     }
 
     .cursor {
       display: inline-block;
-      width: 10px;
       animation: blink 0.8s infinite;
     }
 
     @keyframes blink {
-      0%, 50% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+      50% { opacity: 0; }
     }
   </style>
 </head>
-<body>
 
-  <div class="center-text">
-    hackers are not born<br>
-    they are made<span class="cursor">_</span>
+<body>
+  <div class="overlay"></div>
+
+  <div class="text">
+    <span id="typed"></span><span class="cursor">_</span>
   </div>
 
+  <script>
+    const text = "hackers are not born\nthey are made";
+    const el = document.getElementById("typed");
+
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        el.textContent += text[i];
+        i++;
+        setTimeout(type, 60);
+      }
+    }
+
+    type();
+  </script>
 </body>
 </html>
